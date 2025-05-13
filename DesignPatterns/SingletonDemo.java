@@ -1,4 +1,5 @@
 package MongoDB.DesignPatterns;
+//q:Write a Java class that ensures only one instance is created. Show how to access this instance from multiple points.
 
 import java.util.Scanner;
 
