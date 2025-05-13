@@ -1,6 +1,7 @@
 package MongoDB.DesignPatterns;
 
 //q:Create a context class that uses different sorting strategies (bubble sort, quick sort) at runtime.
+//q:1.	Implement different sorting algorithms (e.g., BubbleSort, QuickSort, MergeSort). Create a class to allow switching between these algorithms at runtime.
 import java.util.Scanner;
 
 // Strategy Interface
