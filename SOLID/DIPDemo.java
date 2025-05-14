@@ -1,3 +1,6 @@
+//q:Apply Dependency Inversion Principle
+//Demonstrate loose coupling by injecting service objects through constructors or interfaces.
+
 package MongoDB.SOLID;
 
 import java.util.Scanner;

@@ -1,0 +1,47 @@
+// Question: Access Private Field with Reflection
+// Use reflection to modify and access a private field of a class.
+
+import java.lang.reflect.Field;
+import java.util.Scanner;
+
+class Person {
+    private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name);
+    }
+}
+
+public class ReflectionPrivateFieldAccess {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter initial name: ");
+        String initialName = scanner.nextLine();
+
+        Person person = new Person(initialName);
+        person.display();
+
+        System.out.print("Enter new name to set via reflection: ");
+        String newName = scanner.nextLine();
+
+        try {
+            // Access the 'name' field of Person
+            Field nameField = Person.class.getDeclaredField("name");
+            nameField.setAccessible(true); // Make the private field accessible
+
+            // Set new value to the field
+            nameField.set(person, newName);
+
+            System.out.println("After modifying the private field using reflection:");
+            person.display();
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            System.out.println("Error accessing or modifying the field: " + e.getMessage());
+        }
+
+        scanner.close();
+    }
+}

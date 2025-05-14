@@ -1,0 +1,35 @@
+// Dynamic Object Creation using Reflection
+// Create an object of a class using Class.forName() and newInstance().
+
+public class DynamicObjectCreation {
+
+    public static void main(String[] args) {
+        try {
+            // Load class dynamically using Class.forName()
+            Class<?> clazz = Class.forName("MyDynamicClass");
+
+            // Create object using newInstance()
+            Object obj = clazz.getDeclaredConstructor().newInstance();
+
+            // Cast and use the object if necessary
+            if (obj instanceof MyDynamicClass) {
+                MyDynamicClass instance = (MyDynamicClass) obj;
+                instance.sayHello();
+            }
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found.");
+        } catch (InstantiationException | IllegalAccessException e) {
+            System.out.println("Cannot instantiate object.");
+        } catch (Exception e) {
+            System.out.println("Unexpected error: " + e.getMessage());
+        }
+    }
+}
+
+// Class to be dynamically loaded
+class MyDynamicClass {
+    public void sayHello() {
+        System.out.println("Hello from MyDynamicClass!");
+    }
+}
